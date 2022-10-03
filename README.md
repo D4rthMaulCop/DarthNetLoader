@@ -63,3 +63,9 @@ PS D:\SecToolDev\DarthLoader\DarthLoader\bin\x64\Release> .\DarthLoader.exe test
     Retrieve a TGT based on a user password/hash, start a /netonly process, and to apply the ticket to the new process/logon session:
         Rubeus.exe asktgt /user:USER </password:PASSWORD [/enctype:DES|RC4|AES128|AES256] | /des:HASH | /rc4:HASH | /aes128:HASH | /aes256:HASH> /createnetonly:C:\Windows\System32\cmd.exe [/show] [/domain:DOMAIN] [/dc:DOMAIN_CONTROLLER] [/nowrap] [/opsec]
 <-----SNIP----->
+
+### To-do
+- [] Paramerize URL 
+- [] Paramerize assembly parameters
+- [] remote fetch congfig? (remote fetch assembly URL, Xor key etc.)
+- [] Help menu
