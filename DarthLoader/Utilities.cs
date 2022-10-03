@@ -1,7 +1,8 @@
-﻿using System;
+// code copied from https://github.com/cobbr/SharpSploit/tree/master/SharpSploit/Evasion
+
+using System;
 using System.Runtime.InteropServices;
 using System.Text;
-
 
 namespace DarthLoader
 {
@@ -118,4 +119,3 @@ namespace DarthLoader
         } 
     }
 }
-
