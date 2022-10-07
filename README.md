@@ -44,7 +44,7 @@ PS D:\SecToolDev\DarthLoader\DarthLoader\bin\x64\Release> .\DarthLoader.exe test
 ```
 
 ## To-do
-- [] Paramerize URL 
+- [X] Paramerize URL 
 - [] Paramerize assembly parameters
 - [] remote fetch congfig? (remote fetch assembly URL, Xor key etc.)
 - [] Help menu
