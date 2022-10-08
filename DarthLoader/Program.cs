@@ -87,7 +87,6 @@ namespace DarthLoader
 
                     Console.WriteLine("[*] Decrypting and executing assembly...");
                     ExecuteAssembly(Utilities.Xor(programBytes, key));
-
                 }
             }
             catch(IndexOutOfRangeException)
