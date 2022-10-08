@@ -92,6 +92,7 @@ namespace DarthLoader
             }
             catch(IndexOutOfRangeException)
             {
+                // clean up
                 Console.WriteLine("[!] Missing argument Xor key!");
                 Environment.Exit(-1);
             }
