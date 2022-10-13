@@ -1,7 +1,0 @@
-D:\SecToolDev\DarthLoader\DarthLoader\bin\Release\DarthLoader.exe.config
-D:\SecToolDev\DarthLoader\DarthLoader\bin\Release\DarthLoader.exe
-D:\SecToolDev\DarthLoader\DarthLoader\bin\Release\DarthLoader.pdb
-D:\SecToolDev\DarthLoader\DarthLoader\obj\Release\DarthLoader.csproj.AssemblyReference.cache
-D:\SecToolDev\DarthLoader\DarthLoader\obj\Release\DarthLoader.csproj.CoreCompileInputs.cache
-D:\SecToolDev\DarthLoader\DarthLoader\obj\Release\DarthLoader.exe
-D:\SecToolDev\DarthLoader\DarthLoader\obj\Release\DarthLoader.pdb

