@@ -22,7 +22,7 @@ DarthLoader will do the following:
  
 PS D:\SecToolDev\DarthLoader\DarthLoader\bin\x64\Release> .\DarthLoader.exe testing123
 [+] ETW bypassed!
-[+] AMSI bypassed!
+[+] Amsi bypassed!
 [*] Downloading and encrypting assembly with the key: testing123
 [!] .Net assembly downloaded!
 [*] Decrypting and executing assembly...
