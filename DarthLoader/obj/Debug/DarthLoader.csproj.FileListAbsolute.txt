@@ -1,0 +1,7 @@
+C:\Users\Vader\Desktop\DarthLoader\DarthLoader\obj\Debug\DarthLoader.csproj.AssemblyReference.cache
+C:\Users\Vader\Desktop\DarthLoader\DarthLoader\obj\Debug\DarthLoader.csproj.CoreCompileInputs.cache
+C:\Users\Vader\Desktop\DarthLoader\DarthLoader\bin\Debug\DarthLoader.exe.config
+C:\Users\Vader\Desktop\DarthLoader\DarthLoader\bin\Debug\DarthLoader.exe
+C:\Users\Vader\Desktop\DarthLoader\DarthLoader\bin\Debug\DarthLoader.pdb
+C:\Users\Vader\Desktop\DarthLoader\DarthLoader\obj\Debug\DarthLoader.exe
+C:\Users\Vader\Desktop\DarthLoader\DarthLoader\obj\Debug\DarthLoader.pdb
