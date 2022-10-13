@@ -52,6 +52,20 @@ PS D:\SecToolDev\DarthLoader\DarthLoader\bin\x64\Release> .\DarthLoader.exe test
 <-----SNIP----->
 ```
 
+## DarthLoaderHelper
+This project was made to help Xor encrypt the strings needed for passing into function calls to patch ETW/AMSI in Helpers.cs.  
+```
+D:\SecToolDev\DarthLoaderHelper.exe testing123
+
+[+] Encrypting with key: testing123
+[+] Encrypted string 'etwbypass': 11110416101E064241
+[+] Encrypted string 'amsibypass': 1508001D0B1717504140
+[+] Encrypted string 'ntdll.dll': 1A1117180540035D5E
+[+] Encrypted string 'EtwEventWrite': 311104311F0B094565411D1116
+[+] Encrypted string 'amsi.dll': 1508001D470A0B5D
+[+] Encrypted string 'AmsiScanBuffer': 3508001D3A0D065F704612031606
+```
+
 ## To-do
 - [X] Paramerize URL 
 - [ ] Paramerize assembly parameters
