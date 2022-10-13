@@ -2,10 +2,12 @@
 This is a project heavily inspired by Jean-François Maes's [SANS  Workshop Reflection in C#](https://www.sans.org/webcasts/sans-workshop-reflection-in-c-/) to help (c)sharpen by C# dev skills. A lot of code was borrowed and/or extended for this project from:
 - https://github.com/cobbr/SharpSploit/tree/master/SharpSploit/Evasion
 - https://jfmaes-1.gitbook.io/reflection-workshop/
+- StackOverflow
 
 DarthLoader will do the following:
 - Remotely fetch a .Net assembly from the web using a base64 encoded url and Xor the byte array in memory.
-- Bypass ETW and AMSI.
+- Fetch a local .Net assembly into memory.
+- Bypass ETW and AMSI by decrypting function strings at runtime via xor key being passed as cmdline arg.
 - Decrypt and run the assembly from memory.
 
 ```
