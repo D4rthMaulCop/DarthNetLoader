@@ -1,0 +1,7 @@
+D:\SecToolDev\DarthLoader\DarthLoader\bin\x64\Release\DarthLoader.exe.config
+D:\SecToolDev\DarthLoader\DarthLoader\bin\x64\Release\DarthLoader.exe
+D:\SecToolDev\DarthLoader\DarthLoader\bin\x64\Release\DarthLoader.pdb
+D:\SecToolDev\DarthLoader\DarthLoader\obj\x64\Release\DarthLoader.csproj.CoreCompileInputs.cache
+D:\SecToolDev\DarthLoader\DarthLoader\obj\x64\Release\DarthLoader.exe
+D:\SecToolDev\DarthLoader\DarthLoader\obj\x64\Release\DarthLoader.pdb
+D:\SecToolDev\DarthLoader\DarthLoader\obj\x64\Release\DarthLoader.csproj.AssemblyReference.cache
