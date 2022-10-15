@@ -67,7 +67,9 @@ D:\SecToolDev\DarthLoaderHelper.exe testing123
 ```
 
 ## To-do
+- [X] Help menu
 - [X] Paramerize URL 
-- [ ] Paramerize assembly parameters
-- [ ] remote fetch congfig? (remote fetch assembly URL, Xor key etc.)
-- [ ] Help menu
+- [X] Add local file assembly loading and parameterize file path 
+- [X] Paramerize assembly parameters
+- [ ] remote fetch config? (remote fetch assembly URL, Xor key etc.)
+
