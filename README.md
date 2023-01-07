@@ -1,5 +1,5 @@
 # DarthLoader
-This is a project heavily inspired by Jean-François Maes's [SANS  Workshop Reflection in C#](https://www.sans.org/webcasts/sans-workshop-reflection-in-c-/) to help (c)sharpen by C# dev skills. A lot of code was borrowed and/or extended for this project from:
+This is a project heavily inspired by Jean-François Maes's [SANS  Workshop Reflection in C#](https://www.sans.org/webcasts/sans-workshop-reflection-in-c-/) to help (c)sharpen my C# dev skills. A lot of code was borrowed and/or extended for this project from:
 - https://github.com/cobbr/SharpSploit/tree/master/SharpSploit/Evasion
 - https://jfmaes-1.gitbook.io/reflection-workshop/
 - StackOverflow
